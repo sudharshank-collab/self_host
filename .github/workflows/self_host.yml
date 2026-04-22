@@ -1,3 +1,10 @@
+name: Verilog CI
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
   verilog-test:
     runs-on: self-hosted
