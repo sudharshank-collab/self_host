@@ -1,0 +1,28 @@
+name: Manual WSL Runner Test
+
+# This enables the manual trigger button
+on:
+  workflow_dispatch:
+
+jobs:
+  check-wsl-environment:
+    # IMPORTANT: This must match the label you gave your runner (default is 'self-hosted')
+    runs-on: self-hosted
+
+    steps:
+      - name: Hello from WSL
+        run: |
+          echo "Success! The workflow is running on my local machine."
+          echo "User: $(whoami)"
+          echo "OS Info:"
+          cat /etc/os-release | grep PRETTY_NAME
+
+      - name: Check Hardware Stats
+        run: |
+          echo "CPU Cores: $(nproc)"
+          free -h
+
+      - name: Verify Workspace
+        run: |
+          echo "Current Directory: $(pwd)"
+          ls -la
